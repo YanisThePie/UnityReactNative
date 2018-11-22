@@ -1,15 +1,16 @@
-import { StackNavigator } from 'react-navigation'
+import React from "react";
+import { createStackNavigator, StackNavigator } from "react-navigation";
 
-import Home from '../screens/home'
-import Options from '../screens/options'
-import UnityApp from '../screens/UnityApp'
+import Home from "../screens/home";
+import Options from "../screens/options";
+import UnityApp from "../screens/unityapp";
 
 const optionsGeneral = {
-  mode: 'modal',
-  headerMode: 'none'
-}
+  mode: "modal",
+  headerMode: "none"
+};
 
-const HomeStack = StackNavigator({
+const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
@@ -19,22 +20,22 @@ const HomeStack = StackNavigator({
   UnityApp: {
     screen: UnityApp,
     navigationOptions: {
-      headerTitle: 'Unity Application'
+      headerTitle: "Unity Application"
     }
   },
   Options: {
     screen: Options,
     navigationOptions: {
-      headerTitle: 'Options'
+      headerTitle: "Options"
     }
   }
-})
+});
 
-export default StackNavigator(
+export default createStackNavigator(
   {
     Home: {
       screen: HomeStack
     }
   },
   optionsGeneral
-)
+);

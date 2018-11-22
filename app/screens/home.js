@@ -1,6 +1,6 @@
+import React, { Component } from 'react'
 import { Button } from 'react-native'
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const BackgroundView = styled.View`
