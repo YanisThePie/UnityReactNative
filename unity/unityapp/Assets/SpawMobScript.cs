@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SpawMobScript : MonoBehaviour {
     float timer = 0;
-    List<GameObject> ListMob = new List<GameObject>();
+    public List<GameObject> ListMob = new List<GameObject>();
     public float frequence;
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +18,9 @@ public class SpawMobScript : MonoBehaviour {
         if (timer >= frequence)
         {
             timer = 0;
-            frequence = Random.Range(10, 30);
-            ListMob[Random.Range(0, ListMob.Count)].SetActive(true);
+            frequence = Random.Range(0, 6);
+            ListMob[Random.Range(0, ListMob.Count)].GetComponent<targetScript>().Activate();
+
         }
         else
         {
