@@ -13,4 +13,10 @@ public class targetScript : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Camera.main.GetComponent<GameScript>().AddScore();
+        gameObject.SetActive(false);
+    }
 }
