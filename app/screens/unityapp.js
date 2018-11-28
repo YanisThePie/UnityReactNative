@@ -8,6 +8,7 @@ import {
   Button
 } from "react-native";
 import UnityView from "react-native-unity-view";
+import { PhotoContex } from "./home.js";
 
 // More info on all the options is below in the API Reference... just some common use cases shown here
 
@@ -20,7 +21,7 @@ export default class App extends React.Component {
   onToggleRotate() {
     if (this.unity) {
       // gameobject param also can be 'Cube'.
-      this.unity.postMessageToUnityManager("message");
+      this.unity.postMessageToUnityManager(PhotoContex.Consumer.data);
     }
   }
   render() {
@@ -36,6 +37,9 @@ export default class App extends React.Component {
           onPress={this.onToggleRotate.bind(this)}
           title="Send Image to Unity"
         />
+        <PhotoContex.Consumer>
+          {data => <Text>Data is here:{data}</Text>}
+        </PhotoContex.Consumer>
       </View>
     );
   }

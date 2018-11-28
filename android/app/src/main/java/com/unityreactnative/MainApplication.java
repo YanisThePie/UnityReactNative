@@ -3,6 +3,7 @@ package com.unityreactnative;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.snapp.imagebase64.RNImgToBase64Package;
 import com.imagepicker.ImagePickerPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.reactnative.unity.view.UnityViewPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNImgToBase64Package(),
             new ImagePickerPackage(),
             new RNGestureHandlerPackage(),
             new UnityViewPackage()

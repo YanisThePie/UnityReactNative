@@ -10,9 +10,15 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import ImgToBase64 from "react-native-image-base64";
 import ImagePicker from "react-native-image-picker";
 
 // More info on all the options is below in the API Reference... just some common use cases shown here
+const PhotoContext = React.createContext();
+
+export const PhotoContex = PhotoContext;
+export const PhotoProvider = PhotoContext.Provider;
+export const PhotoConsumer = PhotoContext.Consumer;
 
 const BackgroundView = styled.View`
   background-color: #baffc9;
@@ -26,16 +32,15 @@ const ButtonContainer = styled.View`
 `;
 
 export default class App extends Component {
-  state = {
-    avatarSource: null,
-    videoSource: null
-  };
-
   constructor(props) {
     super(props);
 
     this.selectPhotoTapped = this.selectPhotoTapped.bind(this);
   }
+
+  state = {
+    avatarSource: null
+  };
 
   selectPhotoTapped() {
     const options = {
@@ -84,36 +89,45 @@ export default class App extends Component {
   render() {
     return (
       <BackgroundView>
-        <ButtonContainer>
-          <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
-            <View
-              style={[
-                styles.avatar,
-                styles.avatarContainer,
-                { marginBottom: 20 }
-              ]}
-            >
-              {this.state.avatarSource === null ? (
-                <Text>Select a Photo</Text>
-              ) : (
-                <Image
-                  style={styles.avatar}
-                  source={this.state.avatarSource}
-                  onLoad={() => {
-                    /* 1. Navigate to the Details route with params */
-                    this.props.navigation.navigate("Details", {
-                      itemId: this.state.avatarSource
-                    });
-                  }}
-                />
-              )}
-            </View>
-          </TouchableOpacity>
-          <Button
-            title="Unity Application"
-            onPress={this.handleUnityAppButtonPress}
-          />
-        </ButtonContainer>
+        <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+          <View
+            style={[
+              styles.avatar,
+              styles.avatarContainer,
+              { marginBottom: 20 }
+            ]}
+          >
+            {this.state.avatarSource === null ? (
+              <Text>Select a Photo</Text>
+            ) : (
+              <Image
+                style={styles.avatar}
+                source={this.state.avatarSource}
+                onLoad={() => {
+                  /* 1. Navigate to the Details route with params */
+                  this.props.navigation.navigate("Details", {
+                    itemId: this.state.avatarSource
+                  });
+                  ImgToBase64.getBase64String(this.state.avatarSource[0]).then(
+                    base64String => {
+                      PhotoContex.Provider.value = base64String;
+                    }
+                  );
+                }}
+              />
+            )}
+          </View>
+        </TouchableOpacity>
+        <Button
+          title="Unity Application"
+          onPress={this.handleUnityAppButtonPress}
+        />
+        <PhotoContex.Provider value="dfdf">
+          {this.props.children}
+          <PhotoContex.Consumer>
+            {data => <Text>Data is here:{data}</Text>}
+          </PhotoContex.Consumer>
+        </PhotoContex.Provider>
       </BackgroundView>
     );
   }
