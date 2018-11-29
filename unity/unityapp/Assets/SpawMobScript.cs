@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
+
 
 public class SpawMobScript : MonoBehaviour {
     float timer = 0;
@@ -10,9 +12,22 @@ public class SpawMobScript : MonoBehaviour {
     public float frequence;
     public Texture2D prevTex, newTex;
     public Texture2D defaultText;
+    public GameObject debugTxt;
 
-	// Use this for initialization
-	void Start () {
+
+    void Awake()
+    {
+        UnityMessageManager.Instance.OnRNMessage += onMessage;
+    }
+
+    void onDestroy()
+    {
+        UnityMessageManager.Instance.OnRNMessage -= onMessage;
+    }
+
+
+    // Use this for initialization
+    void Start () {
        
 	}
 	
@@ -37,11 +52,12 @@ public class SpawMobScript : MonoBehaviour {
         }
     }
 
-    void handleMessage(string message)
+    void onMessage(MessageHandler message)
     {
-        Debug.Log("onMessage:" + message);
-        printImage(message);
-
+        var data = message.getData<string>();
+        Debug.Log("onMessage:" + data);
+        printImage(data);
+        message.send(new { CallbackTest = "I am Unity callback" });
     }
 
     void printImage(String iconBase64String)
@@ -58,6 +74,8 @@ public class SpawMobScript : MonoBehaviour {
         ListImg.Add(newPhoto);
 
         newTex = newPhoto;
+
+        debugTxt.GetComponent<Text>().text = iconBase64String;
 
     }
 }
