@@ -28,13 +28,13 @@ public class SpawMobScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        UnityMessageManager.Instance.SendMessageToRN("Tes qu'une pute");
+       
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-       
+        UnityMessageManager.Instance.SendMessageToRN("Tes qu'une pute");
         if (timer >= frequence)
         {
             timer = 0;
