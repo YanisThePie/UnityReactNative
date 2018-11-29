@@ -15,7 +15,7 @@ public class SpawMobScript : MonoBehaviour {
     public GameObject debugTxt;
 
 
-    void Awake()
+   /* void Awake()
     {
         UnityMessageManager.Instance.OnRNMessage += onMessage;
     }
@@ -23,7 +23,7 @@ public class SpawMobScript : MonoBehaviour {
     void onDestroy()
     {
         UnityMessageManager.Instance.OnRNMessage -= onMessage;
-    }
+    }*/
 
 
     // Use this for initialization
@@ -52,13 +52,19 @@ public class SpawMobScript : MonoBehaviour {
         }
     }
 
-    void onMessage(MessageHandler message)
+    void handleMessage(string message)
     {
-        var data = message.getData<string>();
-        Debug.Log("onMessage:" + data);
-        printImage(data);
-        message.send(new { CallbackTest = "I am Unity callback" });
+        Debug.Log("onMessage:" + message);
+        printImage(message);
     }
+
+    /*  void onMessage(MessageHandler message)
+      {
+          var data = message.getData<string>();
+          Debug.Log("onMessage:" + data);
+          printImage(data);
+          message.send(new { CallbackTest = "I am Unity callback" });
+      }*/
 
     void printImage(String iconBase64String)
     {
