@@ -5,8 +5,14 @@ import {
   View,
   PixelRatio,
   Text,
-  Button
+  Button,
+  Alert
 } from "react-native";
+import {
+  DeviceEventEmitter // will emit events that you can listen to
+} from "react-native";
+
+import { SensorManager } from "NativeModules";
 import UnityView from "react-native-unity-view";
 import { withGlobalContext } from "../config/context";
 
@@ -20,19 +26,33 @@ import { withGlobalContext } from "../config/context";
 class App extends React.Component {
   componentDidMount() {
     if (this.unity) {
-      // gameobject param also can be 'Cube'.
-      this.unity.postMessageToUnityManager(this.props.global.b64);
+      this.unity.postMessageToUnityManager({
+        name: "Base64",
+        data: this.props.global.b64
+      });
     }
+  }
+  onMessage(event) {
+    alert(event); // OnUnityMessage: click
   }
   render() {
     const { navigation } = this.props;
+    DeviceEventEmitter.addListener("Gyroscope", function(data) {
+      /**
+       * data.x
+       * data.y
+       * data.z
+       **/
+    });
+    SensorManager.startGyroscope(100);
     return (
       <View style={styles.container}>
         <UnityView
           ref={ref => (this.unity = ref)}
           style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: 0 }}
+          onMessage={this.onMessage.bind(this)}
         />
-        <Text>Is online: {this.props.global.b64}</Text>
+        <Text>data.</Text>
       </View>
     );
   }

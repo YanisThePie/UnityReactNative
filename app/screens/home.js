@@ -18,7 +18,7 @@ import GlobalContext from "../config/context";
 // More info on all the options is below in the API Reference... just some common use cases shown here
 
 const BackgroundView = styled.View`
-  background-color: #baffc9;
+  background-color: #ffffff;
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ const ButtonContainer = styled.View`
   flex-direction: row;
 `;
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -72,7 +72,7 @@ export default class App extends Component {
           this.setState({
             b64: base64String
           }),
-            (GlobalContext.Provider.value = "dfd");
+            (this.props.global.b64 = base64String);
         });
       }
     });
@@ -93,6 +93,16 @@ export default class App extends Component {
   render() {
     return (
       <BackgroundView>
+        <Image
+          style={{
+            height: 250,
+            width: 350,
+            position: "absolute",
+            top: 0,
+            left: 24
+          }}
+          source={require("../../contents/omg.png")}
+        />
         <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
           <View
             style={[
@@ -126,6 +136,8 @@ export default class App extends Component {
   }
 }
 
+export default withGlobalContext(App);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -135,7 +147,7 @@ const styles = StyleSheet.create({
   },
   avatarContainer: {
     borderColor: "#9B9B9B",
-    borderWidth: 1 / PixelRatio.get(),
+    borderWidth: 3 / PixelRatio.get(),
     justifyContent: "center",
     alignItems: "center"
   },
