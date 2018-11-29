@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using System;
 
 public class cameraScript : MonoBehaviour {
 
@@ -65,6 +66,18 @@ public class cameraScript : MonoBehaviour {
         }
     }*/
 
+   public void getGyro(string data)
+    {
+        UnityMessageManager.Instance.SendMessageToRN("gyro get :" + data);
+        
+        string[] coord = data.Split(',');
+        float x = float.Parse(coord[0]);
+        float y = float.Parse(coord[1]);
+        float z = float.Parse(coord[2]);
+
+        rotateCam(x,y,z);
+    } 
+
    void rotateCam(float x, float y, float z)
     {
         float newX, newY, newZ;
@@ -73,6 +86,12 @@ public class cameraScript : MonoBehaviour {
         newX = oldX - x;
         newY = oldY - y;
         newZ = oldX - z;
+
+        oldX = x;
+        oldY = y;
+        oldZ = z;
+
+        cT.Rotate(newX, newY, newZ);
 
        
     }
