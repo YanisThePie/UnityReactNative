@@ -13,7 +13,7 @@ public class SpawMobScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        printImage();
+       
 	}
 	
 	// Update is called once per frame
@@ -37,9 +37,16 @@ public class SpawMobScript : MonoBehaviour {
         }
     }
 
-    void printImage()
+    void handleMessage(string message)
     {
-        string iconBase64String = "OBFZDTcPCxlCKhdXCQ0kMQhKPh9uIgYIAQxALBtZAwUeOzcdcUEeW0dMO1kbPElWCV1ISFFKZ0kdWFlLAURPZhEFQVseXVtPOUUICVhMAzcfZ14AVEdIVVgfAUIBWVpOUlAeaUVMXFlKIy9rGUN0VF08Oz1POxFfTCcVFw1LMQNbBQYWAQ==";
+        Debug.Log("onMessage:" + message);
+        printImage(message);
+
+    }
+
+    void printImage(String iconBase64String)
+    {
+       // string iconBase64String = "OBFZDTcPCxlCKhdXCQ0kMQhKPh9uIgYIAQxALBtZAwUeOzcdcUEeW0dMO1kbPElWCV1ISFFKZ0kdWFlLAURPZhEFQVseXVtPOUUICVhMAzcfZ14AVEdIVVgfAUIBWVpOUlAeaUVMXFlKIy9rGUN0VF08Oz1POxFfTCcVFw1LMQNbBQYWAQ==";
         /*byte[] decodedBytes = System.Text.Encoding.UTF8.GetBytes(iconBase64String);
         Texture2D tex = new Texture2D(1, 1);
         tex.LoadImage(decodedBytes);
@@ -48,7 +55,7 @@ public class SpawMobScript : MonoBehaviour {
         Texture2D newPhoto = new Texture2D(1, 1);
         newPhoto.LoadImage(Convert.FromBase64String(iconBase64String));
         newPhoto.Apply();
-        // ListImg.Add(newPhoto);
+        ListImg.Add(newPhoto);
 
         newTex = newPhoto;
 

@@ -26,7 +26,7 @@ public class targetScript : MonoBehaviour {
             state += (float)speed / 1000;
 
             tT.localPosition = Vector3.Lerp(origin, Camera.main.GetComponent<Transform>().localPosition, state);
-            tT.eulerAngles += new Vector3(1, 0, 0);
+            tT.Rotate(new Vector3(1,1,1));
         }
         
     }
