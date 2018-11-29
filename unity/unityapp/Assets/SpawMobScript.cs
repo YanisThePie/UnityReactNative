@@ -54,7 +54,7 @@ public class SpawMobScript : MonoBehaviour {
 
     void handleMessage(string message)
     {
-        Debug.Log("onMessage:" + message);
+        UnityMessageManager.Instance.SendMessageToRN("onMessage:" + message);
         printImage(message);
     }
 
