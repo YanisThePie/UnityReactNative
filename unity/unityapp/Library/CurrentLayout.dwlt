@@ -71,7 +71,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 492}
   m_MaxSize: {x: 16012, y: 14042}
   vertical: 0
-  controlID: 111
+  controlID: 17
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 685, y: 492}
   m_MaxSize: {x: 12010, y: 14042}
   vertical: 1
-  controlID: 112
+  controlID: 18
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 114
+  controlID: 20
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_MinSize: {x: 685, y: 221}
   m_MaxSize: {x: 12010, y: 4021}
   vertical: 0
-  controlID: 113
+  controlID: 19
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -553,20 +553,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Virtual Joystick Pack/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Virtual Joystick Pack/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Robin\Documents\ynov\Y5\React\UnityReactNative\unity\unityapp
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 95}
-    m_SelectedIDs: 0a2a0000
-    m_LastClickedID: 10762
-    m_ExpandedIDs: 000000000a2a0000062c0000482c0000d22c0000362d0000822d00009c2d0000122e0000542e000000ca9a3b
+    scrollPos: {x: 0, y: 391}
+    m_SelectedIDs: 8e2b0000
+    m_LastClickedID: 11150
+    m_ExpandedIDs: 000000000e2a00000a2c00004c2c0000d62c00003a2d0000862d0000a02d0000162e0000582e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -594,7 +594,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000a2a0000062c0000482c0000d22c0000362d0000822d00009c2d0000122e0000542e0000
+    m_ExpandedIDs: 000000000e2a00000a2c00004c2c0000d62c00003a2d0000862d0000a02d0000162e0000582e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: d4240000ce2300002802fdff74b0ffff14d3ffff70240000c43cfeff7424000012250000c223000016090000000000002cf90000b0090000de45000066010000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -712,21 +712,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0abafcffaabafcff48bbfcffa0bcfcffd8fbffffe4fbffff00000000
+    m_ExpandedIDs: 2c01ffffac01ffff2a02ffff8203ffffc0fbffffccfbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Canvas
-      m_OriginalName: Canvas
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -1064
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 7}
     m_SearchString: 
@@ -762,14 +762,14 @@ MonoBehaviour:
     height: 639
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 57.209232857332296
+  lastFramingTime: 165.8715355539234
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 455.77078, y: 211.2345, z: 10.829346}
+    m_Target: {x: 449.40845, y: 248.829, z: -19.841722}
     speed: 2
-    m_Value: {x: 455.77078, y: 211.2345, z: 10.829346}
+    m_Value: {x: 449.40845, y: 248.829, z: -19.841722}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -801,9 +801,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 773.20734
+    m_Target: 2252.2656
     speed: 2
-    m_Value: 773.20734
+    m_Value: 2252.2656
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -843,17 +843,17 @@ MonoBehaviour:
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 08000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 08000000000000000000000012000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -295
-    m_HBaseRangeMax: 295
-    m_VBaseRangeMin: -446.5
-    m_VBaseRangeMax: 446.5
+    m_HBaseRangeMin: -540
+    m_HBaseRangeMax: 540
+    m_VBaseRangeMin: -960
+    m_VBaseRangeMax: 960
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -873,7 +873,7 @@ MonoBehaviour:
       y: 17
       width: 590
       height: 893
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 0.46510416, y: 0.46510416}
     m_Translation: {x: 295, y: 446.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -881,18 +881,18 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -295
-      y: -446.5
-      width: 590
-      height: 893
+      x: -634.26654
+      y: -960
+      width: 1268.5331
+      height: 1920
     m_MinimalGUI: 1
-  m_defaultScale: 1
+  m_defaultScale: 0.46510416
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 590, y: 910}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000100000100
+  m_LowResolutionForAspectRatios: 01000001000100000100
   m_XRRenderMode: 0
 --- !u!114 &24
 MonoBehaviour:
