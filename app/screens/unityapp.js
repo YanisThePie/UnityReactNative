@@ -8,7 +8,7 @@ import {
   Button
 } from "react-native";
 import UnityView from "react-native-unity-view";
-import { PhotoContex } from "./home.js";
+import { withGlobalContext } from "../config/context";
 
 // More info on all the options is below in the API Reference... just some common use cases shown here
 
@@ -17,11 +17,11 @@ import { PhotoContex } from "./home.js";
  * The second arg is the callback which sends object: response (more info in the API Reference)
  */
 
-export default class App extends React.Component {
-  onToggleRotate() {
+class App extends React.Component {
+  componentDidMount() {
     if (this.unity) {
       // gameobject param also can be 'Cube'.
-      this.unity.postMessageToUnityManager(PhotoContex.Consumer.data);
+      this.unity.postMessageToUnityManager(this.props.global.b64);
     }
   }
   render() {
@@ -32,18 +32,13 @@ export default class App extends React.Component {
           ref={ref => (this.unity = ref)}
           style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: 0 }}
         />
-        <Button
-          label="Toggle Rotate"
-          onPress={this.onToggleRotate.bind(this)}
-          title="Send Image to Unity"
-        />
-        <PhotoContex.Consumer>
-          {data => <Text>Data is here:{data}</Text>}
-        </PhotoContex.Consumer>
+        <Text>Is online: {this.props.global.b64}</Text>
       </View>
     );
   }
 }
+
+export default withGlobalContext(App);
 
 const styles = StyleSheet.create({
   container: {

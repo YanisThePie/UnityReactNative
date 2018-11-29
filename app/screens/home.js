@@ -12,13 +12,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import ImgToBase64 from "react-native-image-base64";
 import ImagePicker from "react-native-image-picker";
+import { withGlobalContext } from "../config/context";
+import GlobalContext from "../config/context";
 
 // More info on all the options is below in the API Reference... just some common use cases shown here
-const PhotoContext = React.createContext();
-
-export const PhotoContex = PhotoContext;
-export const PhotoProvider = PhotoContext.Provider;
-export const PhotoConsumer = PhotoContext.Consumer;
 
 const BackgroundView = styled.View`
   background-color: #baffc9;
@@ -39,7 +36,8 @@ export default class App extends Component {
   }
 
   state = {
-    avatarSource: null
+    avatarSource: null,
+    b64: null
   };
 
   selectPhotoTapped() {
@@ -69,6 +67,12 @@ export default class App extends Component {
 
         this.setState({
           avatarSource: source
+        });
+        ImgToBase64.getBase64String(response.uri).then(base64String => {
+          this.setState({
+            b64: base64String
+          }),
+            (GlobalContext.Provider.value = "dfd");
         });
       }
     });
@@ -108,11 +112,6 @@ export default class App extends Component {
                   this.props.navigation.navigate("Details", {
                     itemId: this.state.avatarSource
                   });
-                  ImgToBase64.getBase64String(this.state.avatarSource[0]).then(
-                    base64String => {
-                      PhotoContex.Provider.value = base64String;
-                    }
-                  );
                 }}
               />
             )}
@@ -122,12 +121,6 @@ export default class App extends Component {
           title="Unity Application"
           onPress={this.handleUnityAppButtonPress}
         />
-        <PhotoContex.Provider value="dfdf">
-          {this.props.children}
-          <PhotoContex.Consumer>
-            {data => <Text>Data is here:{data}</Text>}
-          </PhotoContex.Consumer>
-        </PhotoContex.Provider>
       </BackgroundView>
     );
   }
