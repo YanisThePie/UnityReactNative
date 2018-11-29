@@ -65,8 +65,9 @@ public class SpawMobScript : MonoBehaviour {
           var data = message.getData<string>();
           Debug.Log("onMessage:" + data);
           printImage(data);
-          message.send(new { CallbackTest = data});
-      }
+        //  message.send(new { CallbackTest = data});
+        UnityMessageManager.Instance.SendMessageToRN("Data : " + data);
+    }
 
     void printImage(String iconBase64String)
     {

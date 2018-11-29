@@ -11,7 +11,7 @@ public class cameraScript : MonoBehaviour {
     Text gyroTxt;
 
     float oldX = 0, oldY = 0, oldZ = 0;
-
+    /*
     void Awake()
     {
         UnityMessageManager.Instance.OnRNMessage += onMessage;
@@ -21,7 +21,7 @@ public class cameraScript : MonoBehaviour {
     {
         UnityMessageManager.Instance.OnRNMessage -= onMessage;
     }
-
+    */
     // Use this for initialization
     void Start () {
         cT = this.GetComponent<Transform>();
@@ -53,7 +53,7 @@ public class cameraScript : MonoBehaviour {
         bT.eulerAngles = cT.eulerAngles;
     }
 
-    void onMessage(MessageHandler message)
+    /*void onMessage(MessageHandler message)
     {
         var data = message.getData<string>();
         Debug.Log("onMessage:" + data);
@@ -63,7 +63,7 @@ public class cameraScript : MonoBehaviour {
         {
 
         }
-    }
+    }*/
 
    void rotateCam(float x, float y, float z)
     {
