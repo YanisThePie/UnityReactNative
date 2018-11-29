@@ -10,8 +10,20 @@ public class cameraScript : MonoBehaviour {
     public GameObject gyroTxtSpot;
     Text gyroTxt;
 
-	// Use this for initialization
-	void Start () {
+    float oldX = 0, oldY = 0, oldZ = 0;
+
+    void Awake()
+    {
+        UnityMessageManager.Instance.OnRNMessage += onMessage;
+    }
+
+    void onDestroy()
+    {
+        UnityMessageManager.Instance.OnRNMessage -= onMessage;
+    }
+
+    // Use this for initialization
+    void Start () {
         cT = this.GetComponent<Transform>();
         gyroTxt = gyroTxtSpot.GetComponent<Text>();
 	}
@@ -23,7 +35,7 @@ public class cameraScript : MonoBehaviour {
 
     void GyroModifyCamera()
     {
-        transform.rotation = GyroToUnity(Input.gyro.attitude);
+        cT.rotation = GyroToUnity(Input.gyro.attitude);
         gyroTxt.text = "input.gyro.attitude: " + Input.gyro.attitude;
     }
 
@@ -40,4 +52,29 @@ public class cameraScript : MonoBehaviour {
         bT.localPosition = new Vector3(0, 0, 1);
         bT.eulerAngles = cT.eulerAngles;
     }
+
+    void onMessage(MessageHandler message)
+    {
+        var data = message.getData<string>();
+        Debug.Log("onMessage:" + data);
+        message.send(new { CallbackTest = "I am Unity callback" });
+
+        if(data.Length <= 10)
+        {
+
+        }
+    }
+
+   void rotateCam(float x, float y, float z)
+    {
+        float newX, newY, newZ;
+
+        //if(oldX > x)
+        newX = oldX - x;
+        newY = oldY - y;
+        newZ = oldX - z;
+
+       
+    }
+
 }

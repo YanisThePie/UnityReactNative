@@ -11,6 +11,8 @@ public class GameScript : MonoBehaviour {
     public float timer;
     public float duration;
 
+
+
 	// Use this for initialization
 	void Start () {
         score = 0;
