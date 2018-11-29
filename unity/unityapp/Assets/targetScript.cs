@@ -41,6 +41,7 @@ public class targetScript : MonoBehaviour {
 
     public void Activate(Texture2D tex)
     {
+        UnityMessageManager.Instance.SendMessageToRN("Tes qu'une pute");
         start = true;
         gameObject.SetActive(true);
         GetComponent<MeshRenderer>().material.mainTexture = tex;
