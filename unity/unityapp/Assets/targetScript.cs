@@ -32,9 +32,15 @@ public class targetScript : MonoBehaviour {
         start = false;
     }
 
-    public void Activate()
+    public void Activate(Texture2D tex)
     {
         start = true;
         gameObject.SetActive(true);
+        GetComponent<MeshRenderer>().material.mainTexture = tex;
     } 
+
+    public void PrintBase64(string String64)
+    {
+
+    }
 }

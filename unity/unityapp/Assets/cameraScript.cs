@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class cameraScript : MonoBehaviour {
 
     public GameObject bulletPrefab;
     Transform cT;
+    public GameObject gyroTxtSpot;
+    Text gyroTxt;
 
 	// Use this for initialization
 	void Start () {
         cT = this.GetComponent<Transform>();
+        gyroTxt = gyroTxtSpot.GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +24,7 @@ public class cameraScript : MonoBehaviour {
     void GyroModifyCamera()
     {
         transform.rotation = GyroToUnity(Input.gyro.attitude);
+        gyroTxt.text = "input.gyro.attitude: " + Input.gyro.attitude;
     }
 
     private static Quaternion GyroToUnity(Quaternion q)

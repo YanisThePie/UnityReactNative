@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class GameScript : MonoBehaviour {
@@ -23,6 +24,11 @@ public class GameScript : MonoBehaviour {
             timer = 0;
             duration--;
             timetxt.GetComponent<Text>().text = "Time Left : " + duration;
+
+            if (duration <= 0)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
         else
         {
@@ -37,4 +43,6 @@ public class GameScript : MonoBehaviour {
         score += 100;
         scoretxt.GetComponent<Text>().text = "Score : " + score;
     }
+
+    
 }
