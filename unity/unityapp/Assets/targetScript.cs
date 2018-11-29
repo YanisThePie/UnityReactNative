@@ -7,11 +7,16 @@ public class targetScript : MonoBehaviour {
     public bool start = false;
     float state = 0;
     public int speed;
+    Transform tT;
 
 	// Use this for initialization
 	void Start () {
         origin = GetComponent<Transform>().localPosition;
-	}
+        tT = GetComponent<Transform>();
+        gameObject.SetActive(false);
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,9 +25,11 @@ public class targetScript : MonoBehaviour {
 
             state += (float)speed / 1000;
 
-            GetComponent<Transform>().localPosition = Vector3.Lerp(origin, Camera.main.GetComponent<Transform>().localPosition, state);
+            tT.localPosition = Vector3.Lerp(origin, Camera.main.GetComponent<Transform>().localPosition, state);
+            tT.Rotate(new Vector3(1,1,1));
         }
-	}
+        
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,9 +39,15 @@ public class targetScript : MonoBehaviour {
         start = false;
     }
 
-    public void Activate()
+    public void Activate(Texture2D tex)
     {
         start = true;
         gameObject.SetActive(true);
+        GetComponent<MeshRenderer>().material.mainTexture = tex;
     } 
+
+    public void PrintBase64(string String64)
+    {
+
+    }
 }
