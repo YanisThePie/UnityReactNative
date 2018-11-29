@@ -13,6 +13,7 @@ public class SpawMobScript : MonoBehaviour {
     public Texture2D prevTex, newTex;
     public Texture2D defaultText;
     public GameObject debugTxt;
+    bool start = false;
 
 
     void Awake()
@@ -50,7 +51,10 @@ public class SpawMobScript : MonoBehaviour {
         }
         else
         {
-            timer += Time.deltaTime;
+            if (start)
+            {
+                timer += Time.deltaTime; 
+            }
         }
     }
 
@@ -64,9 +68,10 @@ public class SpawMobScript : MonoBehaviour {
       {
           var data = message.getData<string>();
           Debug.Log("onMessage:" + data);
-          
+
         //  message.send(new { CallbackTest = data});
-        UnityMessageManager.Instance.SendMessageToRN("Data : " + data);
+        //       UnityMessageManager.Instance.SendMessageToRN("Data : " + data);
+        start = true;
 
         if (data.Length > 25)
             printImage(data);
@@ -89,7 +94,7 @@ public class SpawMobScript : MonoBehaviour {
 
     //    newTex = newPhoto;
 
-        UnityMessageManager.Instance.SendMessageToRN("image printé from :" + iconBase64String);
+      //  UnityMessageManager.Instance.SendMessageToRN("image printé from :" + iconBase64String);
         // debugTxt.GetComponent<Text>().text = iconBase64String;
 
     }

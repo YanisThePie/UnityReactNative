@@ -72,6 +72,12 @@
     <Compile Include="Assets\SpawMobScript.cs" />
     <Compile Include="Assets\targetScript.cs" />
     <Compile Include="Assets\UnityMessageManager.cs" />
+    <Compile Include="Assets\Virtual Joystick Pack\Examples\2D Example\Player2DExample.cs" />
+    <Compile Include="Assets\Virtual Joystick Pack\Examples\3D Example\Player3DExample.cs" />
+    <Compile Include="Assets\Virtual Joystick Pack\Scripts\Base\Joystick.cs" />
+    <Compile Include="Assets\Virtual Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Virtual Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+    <Compile Include="Assets\Virtual Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Fantasy Skybox FREE\Fog and Ambient references.txt" />
     <None Include="Assets\GE Common Assets\Readme.txt" />
