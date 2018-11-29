@@ -52,7 +52,7 @@ public class cameraScript : MonoBehaviour {
     void rotateJoy()
     {
         cT.Rotate(-joystick.Vertical, joystick.Horizontal, 0);
-       // cT.localEulerAngles = new Vector3(cT.localEulerAngles.x, cT.localEulerAngles.y, 0);
+        cT.localEulerAngles = new Vector3(cT.localEulerAngles.x, cT.localEulerAngles.y, 0);
     }
 
     void GyroModifyCamera()
