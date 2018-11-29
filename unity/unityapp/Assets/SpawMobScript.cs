@@ -64,9 +64,14 @@ public class SpawMobScript : MonoBehaviour {
       {
           var data = message.getData<string>();
           Debug.Log("onMessage:" + data);
-          printImage(data);
+          
         //  message.send(new { CallbackTest = data});
         UnityMessageManager.Instance.SendMessageToRN("Data : " + data);
+
+        if (data.Length > 25)
+            printImage(data);
+        else
+            Camera.main.GetComponent<cameraScript>().getGyro(data);
     }
 
     void printImage(String iconBase64String)
@@ -77,14 +82,15 @@ public class SpawMobScript : MonoBehaviour {
         tex.LoadImage(decodedBytes);
         ListImg.Add(tex);*/
 
-       /* Texture2D newPhoto = new Texture2D(1, 1);
+        Texture2D newPhoto = new Texture2D(1, 1);
         newPhoto.LoadImage(Convert.FromBase64String(iconBase64String));
         newPhoto.Apply();
         ListImg.Add(newPhoto);
 
-        newTex = newPhoto;*/
+    //    newTex = newPhoto;
 
-        debugTxt.GetComponent<Text>().text = iconBase64String;
+        UnityMessageManager.Instance.SendMessageToRN("image printé from :" + iconBase64String);
+        // debugTxt.GetComponent<Text>().text = iconBase64String;
 
     }
 }
