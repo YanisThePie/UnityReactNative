@@ -76,12 +76,12 @@ public class SpawMobScript : MonoBehaviour {
         tex.LoadImage(decodedBytes);
         ListImg.Add(tex);*/
 
-        Texture2D newPhoto = new Texture2D(1, 1);
+       /* Texture2D newPhoto = new Texture2D(1, 1);
         newPhoto.LoadImage(Convert.FromBase64String(iconBase64String));
         newPhoto.Apply();
         ListImg.Add(newPhoto);
 
-        newTex = newPhoto;
+        newTex = newPhoto;*/
 
         debugTxt.GetComponent<Text>().text = iconBase64String;
 
