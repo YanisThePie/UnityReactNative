@@ -27,6 +27,13 @@ public class targetScript : MonoBehaviour {
 
             tT.localPosition = Vector3.Lerp(origin, Camera.main.GetComponent<Transform>().localPosition, state);
             tT.Rotate(new Vector3(1,1,1));
+
+            if (state >= 1)
+            {
+                GetComponent<Transform>().localPosition = origin;
+                start = false;
+                gameObject.SetActive(false);
+            }
         }
         
     }
@@ -34,21 +41,19 @@ public class targetScript : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         Camera.main.GetComponent<GameScript>().AddScore();
-        gameObject.SetActive(false);
+        state = 0;
         GetComponent<Transform>().localPosition = origin;
         start = false;
+        gameObject.SetActive(false);
     }
 
     public void Activate(Texture2D tex)
     {
-       // UnityMessageManager.Instance.SendMessageToRN("Tes qu'une pute");
+    
         start = true;
         gameObject.SetActive(true);
         GetComponent<MeshRenderer>().material.mainTexture = tex;
     } 
 
-    public void PrintBase64(string String64)
-    {
-
-    }
+ 
 }

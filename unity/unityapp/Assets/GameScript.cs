@@ -29,6 +29,7 @@ public class GameScript : MonoBehaviour {
 
             if (duration <= 0)
             {
+                UnityMessageManager.Instance.SendMessageToRN("Bravo vous avez scoré : " + score);
                 SceneManager.LoadScene(0);
             }
         }

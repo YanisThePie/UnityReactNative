@@ -13,6 +13,7 @@ public class SpawMobScript : MonoBehaviour {
     public Texture2D prevTex, newTex;
     public Texture2D defaultText;
     public GameObject debugTxt;
+    bool start = false;
 
 
     void Awake()
@@ -45,28 +46,22 @@ public class SpawMobScript : MonoBehaviour {
             else
             ListMob[UnityEngine.Random.Range(0, ListMob.Count)].GetComponent<targetScript>().Activate(ListImg[UnityEngine.Random.Range(0, ListImg.Count-1)]);
 
-
-
         }
         else
         {
-            timer += Time.deltaTime;
+            if (start)
+            {
+                timer += Time.deltaTime; 
+            }
         }
     }
-
-    /*void handleMessage(string message)
-    {
-        UnityMessageManager.Instance.SendMessageToRN("onMessage:" + message);
-        printImage(message);
-    }*/
 
      void onMessage(MessageHandler message)
       {
           var data = message.getData<string>();
           Debug.Log("onMessage:" + data);
-          
-        //  message.send(new { CallbackTest = data});
-        UnityMessageManager.Instance.SendMessageToRN("Data : " + data);
+
+        start = true;
 
         if (data.Length > 25)
             printImage(data);
@@ -76,21 +71,9 @@ public class SpawMobScript : MonoBehaviour {
 
     void printImage(String iconBase64String)
     {
-       // string iconBase64String = "OBFZDTcPCxlCKhdXCQ0kMQhKPh9uIgYIAQxALBtZAwUeOzcdcUEeW0dMO1kbPElWCV1ISFFKZ0kdWFlLAURPZhEFQVseXVtPOUUICVhMAzcfZ14AVEdIVVgfAUIBWVpOUlAeaUVMXFlKIy9rGUN0VF08Oz1POxFfTCcVFw1LMQNbBQYWAQ==";
-        /*byte[] decodedBytes = System.Text.Encoding.UTF8.GetBytes(iconBase64String);
-        Texture2D tex = new Texture2D(1, 1);
-        tex.LoadImage(decodedBytes);
-        ListImg.Add(tex);*/
-
         Texture2D newPhoto = new Texture2D(1, 1);
         newPhoto.LoadImage(Convert.FromBase64String(iconBase64String));
         newPhoto.Apply();
         ListImg.Add(newPhoto);
-
-    //    newTex = newPhoto;
-
-        UnityMessageManager.Instance.SendMessageToRN("image printé from :" + iconBase64String);
-        // debugTxt.GetComponent<Text>().text = iconBase64String;
-
     }
 }

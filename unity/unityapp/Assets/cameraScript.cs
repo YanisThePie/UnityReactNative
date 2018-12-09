@@ -10,6 +10,10 @@ public class cameraScript : MonoBehaviour {
     Transform cT;
     public GameObject gyroTxtSpot;
     Text gyroTxt;
+    float timer = 0;
+    public float frequance;
+
+    public Joystick joystick;
 
     float oldX = 0, oldY = 0, oldZ = 0;
     /*
@@ -30,8 +34,25 @@ public class cameraScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        GyroModifyCamera();
+	void FixedUpdate () {
+        // GyroModifyCamera();
+        rotateJoy();
+
+        if (timer >= frequance)
+        {
+            timer = 0;
+            shoot();
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
+    }
+
+    void rotateJoy()
+    {
+        cT.Rotate(-joystick.Vertical, joystick.Horizontal, 0);
+        cT.localEulerAngles = new Vector3(cT.localEulerAngles.x, cT.localEulerAngles.y, 0);
     }
 
     void GyroModifyCamera()
@@ -52,6 +73,7 @@ public class cameraScript : MonoBehaviour {
         bT.SetParent(cT);
         bT.localPosition = new Vector3(0, 0, 1);
         bT.eulerAngles = cT.eulerAngles;
+        bT.SetParent(null);
     }
 
     /*void onMessage(MessageHandler message)
